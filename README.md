@@ -1,5 +1,19 @@
 ## Asset Builder for RimWorld
 
+# Asset Bundles
+
+Unity can use [Asset Bundles](https://docs.unity3d.com/Manual/AssetBundlesIntro.html) for loading assets to be used in the game. 
+
+This has the benefit of lowering the load-times of the game as it avoids loading each texture/sound/asset separately and instead only load one bundle.
+
+Referencing files in the bundle is done the same way as when they are separate files since the bundle contains the path the files were in when imported.
+
+Bundles are version specific to the Unity-version they were created with so bundles created for Rimworld built in 2022.3 cannot be used in the earlier version of the game.
+
+If your mod has version-support you will need to use [LoadFolders.xml](https://rimworldwiki.com/wiki/Modding_Tutorials/Mod_Folder_Structure#LoadFolders.xml_.28Optional.29) to have older versions use older bundles or the actual textures/sounds-folders
+
+Files loaded from the Textures/Sounds folders will override any files in AssetBundles so be sure to exclude these folders from loading if using AssetBundles.
+
 
 # General usage
 
