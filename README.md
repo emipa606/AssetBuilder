@@ -1,6 +1,6 @@
-## Asset Builder for RimWorld
+# Asset Builder for RimWorld
 
-# Asset Bundles
+## Asset Bundles
 
 Unity can use [Asset Bundles](https://docs.unity3d.com/Manual/AssetBundlesIntro.html) for loading assets to be used in the game. 
 
@@ -15,7 +15,7 @@ If your mod has version-support you will need to use [LoadFolders.xml](https://r
 Files loaded from the Textures/Sounds folders will override any files in AssetBundles so be sure to exclude these folders from loading if using AssetBundles.
 
 
-# General usage
+## General usage
 
 Install [Unity 2022.3](https://unity.com/releases/editor/archive)
 
@@ -28,7 +28,7 @@ The bundle can include Textures and Sounds but not custom shaders or other advan
 To verify that the bundle has the correct files with the correct paths, use a tool like [Asset Studio](https://github.com/Perfare/AssetStudio/releases/latest)
 
 
-# Example
+## Example
 
 Mod has the identifier `author.modname`
 
