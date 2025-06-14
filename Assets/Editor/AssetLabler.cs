@@ -7,9 +7,6 @@ public class AssetLabeler
     // The folder that holds your mod textures.
     private static readonly string assetsFolder = "Assets/Data";
 
-    // The common asset bundle name for all textures.
-    private static readonly string commonAssetBundleName = "assetBundle";
-
     /// <summary>
     ///     Converts a texture asset from Sprite to Default to prevent Unity from generating sprite sub-assets.
     /// </summary>
@@ -30,10 +27,10 @@ public class AssetLabeler
     }
 
     /// <summary>
-    ///     Labels all texture assets in modTexturesFolder with a single common asset bundle name.
+    ///     Labels all assets  with a single common asset bundle name.
     /// </summary>
     /// <returns>The number of textures labeled.</returns>
-    public static int LabelAllAssetsWithCommonName()
+    public static int LabelAllAssetsWithCommonName(string assetFileName)
     {
         if (!Directory.Exists(assetsFolder))
         {
@@ -52,7 +49,8 @@ public class AssetLabeler
             var extension = Path.GetExtension(assetPath).ToLower();
 
             // Process only common texture and audio file types .
-            if (extension != ".png" && extension != ".wav" && extension != ".mp3" && extension != ".ogg")
+            if (extension != ".png" && extension != ".jpeg" && extension != ".jpg" && extension != ".psd" &&
+                extension != ".wav" && extension != ".mp3" && extension != ".ogg")
             {
                 continue;
             }
@@ -74,12 +72,12 @@ public class AssetLabeler
                 continue;
             }
 
-            importer.assetBundleName = commonAssetBundleName;
+            importer.assetBundleName = assetFileName;
             assetsLabeled++;
-            Debug.Log($"Labeled asset: {assetPath} as {commonAssetBundleName}");
+            Debug.Log($"Labeled asset: {assetPath} as {assetFileName}");
         }
 
-        Debug.Log($"Labeling complete: {assetsLabeled} assets labeled with \"{commonAssetBundleName}\".");
+        Debug.Log($"Labeling complete: {assetsLabeled} assets labeled with \"{assetFileName}\".");
         return assetsLabeled;
     }
 
@@ -87,6 +85,6 @@ public class AssetLabeler
     [MenuItem("Assets/Label All Assets")]
     public static void Menu_LabelAllTexturesWithCommonName()
     {
-        LabelAllAssetsWithCommonName();
+        LabelAllAssetsWithCommonName("DefaultAssetBundleName");
     }
 }

@@ -8,7 +8,7 @@ This has the benefit of lowering the load-times of the game as it avoids loading
 
 Referencing files in the bundle is done the same way as when they are separate files since the bundle contains the path the files were in when imported.
 
-Bundles are version specific to the Unity-version they were created with so bundles created for Rimworld built in 2022.3 cannot be used in the earlier version of the game.
+Bundles are version specific to the Unity-version they were created with so bundles created for RimWorld 1.6 onwards are built in 2022.3 and cannot be used in earlier versions of the game.
 
 If your mod has version-support you will need to use [LoadFolders.xml](https://rimworldwiki.com/wiki/Modding_Tutorials/Mod_Folder_Structure#LoadFolders.xml_.28Optional.29) to have older versions use older bundles or the actual textures/sounds-folders
 
@@ -27,6 +27,7 @@ The bundle can include Textures and Sounds but not custom shaders or other advan
 
 To verify that the bundle has the correct files with the correct paths, use a tool like [Asset Studio](https://github.com/Perfare/AssetStudio/releases/latest)
 
+NOTE: Asset bundle files has to have a unique name due to a [limitation](https://issuetracker.unity3d.com/issues/failure-loading-multiple-bundles-with-same-names-but-different-files) in Unity
 
 ## Example
 
@@ -38,8 +39,8 @@ Copy the whole Textures-folder to `c:\Asset Builder\Assets\Data\author.modname\`
 
 Run Unity in batch mode with:
 
-`"C:\Program Files\Unity 2022.3.61f1\Editor\Unity.exe" -batchmode -quit -projectPath "c:\Asset Builder\Assets\Data\author.modname" -executeMethod ModAssetBundleBuilder.BuildBundles`
+`"C:\Program Files\Unity 2022.3.61f1\Editor\Unity.exe" -batchmode -quit -projectPath "c:\Asset Builder\Assets\Data\author.modname" -executeMethod ModAssetBundleBuilder.BuildBundles --assetBundleName=author_modname`
 
 The bundle should then be found in `c:\Asset Builder\Assets\AssetBundles`
 
-Copy the `assetBundle` and `assetBundle.manifest` files to an AssetBundles-folder in the mod
+Copy the `author_modname` and `author_modname.manifest` files to an AssetBundles-folder in the mod
