@@ -14,6 +14,11 @@ If your mod has version-support you will need to use [LoadFolders.xml](https://r
 
 Files loaded from the Textures/Sounds folders will override any files in AssetBundles so be sure to exclude these folders from loading if using AssetBundles.
 
+It is a good idea to use Asset Bundles when the total amount of asset files are above 10.
+
+Here is a chart showing the increase in load-times with different amounts of textures in various sizes:
+
+![Load times example](example.png "Load-times vs. Textures")
 
 ## General usage
 
