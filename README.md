@@ -6,6 +6,8 @@ Unity can use [Asset Bundles](https://docs.unity3d.com/Manual/AssetBundlesIntro.
 
 This has the benefit of lowering the load-times of the game as it avoids loading each texture/sound/asset separately and instead only load one bundle.
 
+The data in the bundle is also compressed in a very effective way usually making the bundle size about half of the original file size.
+
 Referencing files in the bundle is done the same way as when they are separate files since the bundle contains the path the files were in when imported.
 
 Bundles are version specific to the Unity-version they were created with so bundles created for RimWorld 1.6 onwards are built in 2022.3 and cannot be used in earlier versions of the game.
