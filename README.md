@@ -34,7 +34,9 @@ The bundle can include Textures and Sounds but not custom shaders or other advan
 
 To verify that the bundle has the correct files with the correct paths, use a tool like [Asset Studio](https://github.com/Perfare/AssetStudio/releases/latest)
 
-NOTE: Asset bundle files has to have a unique name due to a [limitation](https://issuetracker.unity3d.com/issues/failure-loading-multiple-bundles-with-same-names-but-different-files) in Unity
+**NOTE 1: Asset bundle files has to have a unique name due to a [limitation](https://issuetracker.unity3d.com/issues/failure-loading-multiple-bundles-with-same-names-but-different-files) in Unity**
+
+**NOTE 2: Terrain textures are imported in a different way so if you have terrain-textures, be sure to place them in a path that has folder named "terrain" for the script to know its a terrain-texture.**
 
 ## Example
 

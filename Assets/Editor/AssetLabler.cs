@@ -55,24 +55,62 @@ public class AssetLabeler
                 continue;
             }
 
+            var isTexture = extension is ".png" or ".jpeg" or ".jpg" or ".psd";
+
             // Confirm that the asset is located under the Assets folder.
             if (!assetPath.StartsWith("Assets"))
             {
                 continue;
             }
 
-            // Convert Sprite textures to Default to avoid additional sprite sub-assets.
-            ConvertSpriteToDefault(assetPath);
-
-            // Set a common asset bundle name for every texture.
-            var importer = AssetImporter.GetAtPath(assetPath);
-            if (importer is null)
+            if (isTexture)
             {
-                Debug.LogWarning($"Could not get importer for: {assetPath}");
-                continue;
+                // Convert Sprite textures to Default to avoid additional sprite sub-assets.
+                ConvertSpriteToDefault(assetPath);
+
+                // Set a common asset bundle name for every texture.
+                var importer = (TextureImporter)AssetImporter.GetAtPath(assetPath);
+                if (importer is null)
+                {
+                    Debug.LogWarning($"Could not get importer for: {assetPath}");
+                    continue;
+                }
+
+                importer.assetBundleName = assetFileName;
+                importer.alphaIsTransparency = true;
+                // Check if the path has terrain in it, if so, set the wrap mode to Repeat.
+                importer.wrapMode = assetPath.ToLower().Contains("/terrain/")
+                    ? TextureWrapMode.Repeat
+                    : TextureWrapMode.Clamp;
+
+                importer.textureType = TextureImporterType.Default;
+                importer.filterMode = FilterMode.Trilinear;
+                importer.mipmapEnabled = true;
+                importer.mipmapFilter = TextureImporterMipFilter.KaiserFilter;
+                importer.SaveAndReimport();
+            }
+            else
+            {
+                var importer = (AudioImporter)AssetImporter.GetAtPath(assetPath);
+                if (importer is null)
+                {
+                    Debug.LogWarning($"Could not get importer for: {assetPath}");
+                    continue;
+                }
+
+                importer.assetBundleName = assetFileName;
+                var sampleSettings = new AudioImporterSampleSettings
+                {
+                    compressionFormat = AudioCompressionFormat.Vorbis,
+                    sampleRateSetting = AudioSampleRateSetting.OptimizeSampleRate,
+                    loadType = AudioClipLoadType.CompressedInMemory,
+                    quality = 0.25f,
+                    preloadAudioData = true
+                };
+                importer.defaultSampleSettings = sampleSettings;
+                importer.SaveAndReimport();
             }
 
-            importer.assetBundleName = assetFileName;
             assetsLabeled++;
             Debug.Log($"Labeled asset: {assetPath} as {assetFileName}");
         }
