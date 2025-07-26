@@ -48,7 +48,7 @@ Copy the whole Textures-folder to `c:\Asset Builder\Assets\Data\author.modname\`
 
 Run Unity in batch mode with:
 
-`"C:\Program Files\Unity 2022.3.61f1\Editor\Unity.exe" -batchmode -quit -projectPath "c:\Asset Builder\Assets\Data\author.modname" -executeMethod ModAssetBundleBuilder.BuildBundles --assetBundleName=author_modname`
+`"C:\Program Files\Unity 2022.3.61f1\Editor\Unity.exe" -batchmode -quit -projectPath "c:\Asset Builder" -executeMethod ModAssetBundleBuilder.BuildBundles --assetBundleName=author_modname`
 
 The bundle should then be found in `c:\Asset Builder\Assets\AssetBundles`
 
