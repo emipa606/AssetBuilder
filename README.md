@@ -24,7 +24,7 @@ Here is a chart showing the increase in load-times with different amounts of tex
 
 ## General usage
 
-Install [Unity 2022.3](https://unity.com/releases/editor/archive)
+Install [Unity 2022.3](https://unity.com/releases/editor/archive) as well as [Unity HUB](https://unity.com/download)
 
 Place asset content in Assets/Data in a folder with the mod-identifier as a name
 
@@ -48,7 +48,7 @@ Copy the whole Textures-folder to `c:\Asset Builder\Assets\Data\author.modname\`
 
 Run Unity in batch mode with:
 
-`"C:\Program Files\Unity 2022.3.61f1\Editor\Unity.exe" -batchmode -quit -projectPath "c:\Asset Builder" -executeMethod ModAssetBundleBuilder.BuildBundles --assetBundleName=author_modname`
+`"C:\Program Files\Unity 2022.3.61f1\Editor\Unity.exe" -batchmode -quit -projectPath="c:\Asset Builder" -executeMethod ModAssetBundleBuilder.BuildBundles --assetBundleName=author_modname`
 
 The bundle should then be found in `c:\Asset Builder\Assets\AssetBundles`
 
